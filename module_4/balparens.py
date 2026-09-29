@@ -12,10 +12,11 @@ def par_checker(symbol_string):
             s.pop()
     return s.is_empty()
 
+print(par_checker("{ [ a + (b * c) ] - (d + e) }"))  
 
 # add test cases here
 # print(par_checker("()"))  # True
 # print(par_checker("(())"))  # True
-print(par_checker("(()"))  # False
+#print(par_checker("(()"))  # False
 # print(par_checker("())"))  # False
 # print(par_checker(")("))  # False
