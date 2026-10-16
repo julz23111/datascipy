@@ -27,7 +27,7 @@ class Node:
 
     def __str__(self):
         """String"""
-    
+        return f"Node({self._data})"
 class UnorderedList:
 
     def __init__(self):
@@ -40,6 +40,7 @@ class UnorderedList:
         temp = Node(item)
         temp.set_next(self.head)
         self.head = temp
+        #print('at end of add')
         
     def search(self, item):
         current = self.head
@@ -50,16 +51,35 @@ class UnorderedList:
                 current = current.next
         return False
     
-    def remove(self):
-        pass
+    def remove(self, item):
+        current = self.head
+        previous = None
+
+        while current is not None:
+            if current._data == item:
+               break
+            previous = current
+            current = current.next
+        if current is None:
+            raise ValueError(f"{item} is not in the list")\
+            #case: first item remove
+        if previous is None:
+            self.head = current.next
+        else:
+            previous.next = current.next
     
     def size(self):
         pass
     
     def append(self, item):
         pass
+    def insert(self, pos, item):
+        pass
+    def index(self, item):
+        pass
+    def pop(self):
+        pass
     
-    #insert, index, pop
 
 # helper for printing/development
 def printUnord(theList):   
@@ -67,8 +87,9 @@ def printUnord(theList):
     current = theList.head
     
     while current is not None:
-        print(f'{str(current.get_data())} ',end='')
+        print(f'{str(current._data)} ',end='') #pep8
         current = current.next
+    print()  # newline
     
 def main():
     
@@ -76,7 +97,18 @@ def main():
     
     myList.add(31)
     myList.add(77)
+    myList.add(17)
+    myList.add(93)  
+    myList.add(26)
+    myList.add(54)
+
     printUnord(myList)
+
+    #myList.remove(54)
+    #myList.remove(31)
+    #myList.remove(93)
+    #printUnord(myList)
+    
     
 main()
     
